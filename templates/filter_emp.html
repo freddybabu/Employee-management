@@ -7,15 +7,36 @@
     <title>home page</title>
 </head>
 <body>
+    <style>
+        .form-control{
+            width: 25rem;
+        }
+    </style>
     
     <div class="container">
         <!-- Content here -->
-        <h1>welcome...</h1>
+        <h1>Filter employee details!</h1>
         <hr>
-        <a class="btn btn-primary" href="/all_emp" role="button">View all employee</a>
-        <a class="btn btn-primary" href="/add_emp" role="button">Add an employee</a>
-        <a class="btn btn-primary" href="/filter_emp" role="button">Filter employee Details</a>
-        <a class="btn btn-primary" href="/remove_emp" role="button">Remove an employee</a>
+        <form action="/filter_emp" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="first_name" class="form-label">Employee First/Last Name</label>
+              <input type="text" class="form-control" name="name" id="name" value="{{name}}">
+            </div>
+                        
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Department</label>
+                <input type="text" class="form-control" name="dept" id="department" value="{{dept}}">
+            </div>
+            
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <input type="text" class="form-control" name="role" id="role" value="{{role}}">
+              </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      
     </div>
     
 </body>
